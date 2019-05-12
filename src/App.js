@@ -5,6 +5,11 @@ import Toggle from "./Toggle.js";
 import Greeting from "./Greeting.js";
 // import Comment from "./Comment.js";
 // import data from "./data.js";
+import ListNumbers from "./ListNumbers.js";
+import Blog from "./Blog.js";
+import NameForm from "./NameForm.js";
+import FlavorForm from "./FlavorForm.js";
+import Reservation from "./Reservation.js";
 
 function App() {
   return (
@@ -30,7 +35,26 @@ function App() {
       <div>
         <Greeting isLoggedIn={true} />
         {/* <Comment date={data.date} text={data.text} author={data.author} /> */}
+        <ListNumbers numbers={[1, 2, 3, 4, 5]} />
+        <Blog
+          posts={[
+            {
+              id: 1,
+              title: "Bonjour, monde",
+              content: "Bienvenue sur la doc de React !"
+            },
+            {
+              id: 2,
+              title: "Installation",
+              content: "Vous pouvez installer React depuis npm."
+            }
+          ]}
+        />
+        <NameForm />
+        <FlavorForm />
+        <Reservation />
       </div>
+      <div />
     </div>
   );
 }
