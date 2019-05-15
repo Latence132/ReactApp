@@ -10,6 +10,7 @@ import Blog from "./Blog.js";
 import NameForm from "./NameForm.js";
 import FlavorForm from "./FlavorForm.js";
 import Reservation from "./Reservation.js";
+import Calculator from "./temperature/calculator.js";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
         <NameForm />
         <FlavorForm />
         <Reservation />
+        <Calculator />
       </div>
       <div />
     </div>
