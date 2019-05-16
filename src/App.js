@@ -3,8 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Toggle from "./Toggle.js";
 import Greeting from "./Greeting.js";
-// import Comment from "./Comment.js";
-// import data from "./data.js";
+import { Comment } from "./Comment.js";
 import ListNumbers from "./ListNumbers.js";
 import Blog from "./Blog.js";
 import NameForm from "./NameForm.js";
@@ -13,6 +12,14 @@ import Reservation from "./Reservation.js";
 import Calculator from "./temperature/calculator.js";
 
 function App() {
+  const data = {
+    date: new Date(),
+    text: "I hope you enjoy learning React!",
+    author: {
+      name: "Hello Kitty",
+      avatarUrl: "https://placekitten.com/g/64/64"
+    }
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -33,10 +40,12 @@ function App() {
       <div style={{ width: "1200" }}>
         <Toggle style={{ color: "red" }} />
       </div>
-      <div>
+      <section>
         <Greeting isLoggedIn={true} />
-        {/* <Comment date={data.date} text={data.text} author={data.author} /> */}
-        <ListNumbers numbers={[1, 2, 3, 4, 5]} />
+        <Comment date={data.date} text={data.text} author={data.author} />
+        <div>
+          <ListNumbers numbers={[1, 2, 3, 4, 5]} />
+        </div>
         <Blog
           posts={[
             {
@@ -55,7 +64,7 @@ function App() {
         <FlavorForm />
         <Reservation />
         <Calculator />
-      </div>
+      </section>
       <div />
     </div>
   );

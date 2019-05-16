@@ -1,17 +1,16 @@
 import React from "react";
 
-function formatDate(date) {
-  //   return date.toLocaleDateString();
-  return date;
+export function formatDate(date) {
+  return date.toLocaleDateString();
 }
 
-function Avatar(props) {
+export function Avatar(props) {
   return (
     <img className="Avatar" src={props.user.avatarUrl} alt={props.user.name} />
   );
 }
 
-function UserInfo(props) {
+export function UserInfo(props) {
   return (
     <div className="UserInfo">
       <Avatar user={props.user} />
@@ -20,7 +19,7 @@ function UserInfo(props) {
   );
 }
 
-function Comment(props) {
+export function Comment(props) {
   return (
     <div className="Comment">
       <UserInfo user={props.author} />
@@ -29,8 +28,6 @@ function Comment(props) {
     </div>
   );
 }
-
-export default [Comment, UserInfo, Avatar, formatDate];
 
 // ReactDOM.render(
 //   <Comment date={comment.date} text={comment.text} author={comment.author} />,
