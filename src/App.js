@@ -20,6 +20,18 @@ function App() {
       avatarUrl: "https://placekitten.com/g/64/64"
     }
   };
+  const posts = [
+    {
+      id: 1,
+      title: "Bonjour, monde",
+      content: "Bienvenue sur la doc de React !"
+    },
+    {
+      id: 2,
+      title: "Installation",
+      content: "Vous pouvez installer React depuis npm."
+    }
+  ];
   return (
     <div className="App">
       <header className="App-header">
@@ -37,33 +49,46 @@ function App() {
         </a>
       </header>
 
-      <div style={{ width: "1200" }}>
-        <Toggle style={{ color: "red" }} />
-      </div>
-      <section>
-        <Greeting isLoggedIn={true} />
-        <Comment date={data.date} text={data.text} author={data.author} />
-        <div>
-          <ListNumbers numbers={[1, 2, 3, 4, 5]} />
+      <div />
+      <section className="container">
+        <div className="row">
+          <div className="col s4">
+            <Toggle />
+          </div>
+          <div className="col s4">
+            <Greeting isLoggedIn={false} />
+          </div>
+
+          <div className="col s4">
+            <Comment date={data.date} text={data.text} author={data.author} />
+          </div>
         </div>
-        <Blog
-          posts={[
-            {
-              id: 1,
-              title: "Bonjour, monde",
-              content: "Bienvenue sur la doc de React !"
-            },
-            {
-              id: 2,
-              title: "Installation",
-              content: "Vous pouvez installer React depuis npm."
-            }
-          ]}
-        />
-        <NameForm />
-        <FlavorForm />
-        <Reservation />
-        <Calculator />
+
+        <div className="row">
+          <div className="col s5 card blue lighten-2">
+            <Blog posts={posts} />
+          </div>
+
+          <div className="col s1">
+            <ListNumbers numbers={[1, 2, 3, 4, 5]} />
+          </div>
+
+          <div className="col s5">
+            <NameForm />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="col s3 ">
+            <FlavorForm />
+          </div>
+          <div className="col s3">
+            <Reservation />
+          </div>
+          <div className="col s3">
+            <Calculator />
+          </div>
+        </div>
       </section>
       <div />
     </div>

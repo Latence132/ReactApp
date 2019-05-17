@@ -1,13 +1,13 @@
 import React from "react";
 
 function Blog(props) {
-  const sidebar = (
-    <ul>
-      {props.posts.map(post => (
-        <li key={post.id}>{post.title}</li>
-      ))}
-    </ul>
-  );
+  // const sidebar = (
+  //   <ul>
+  //     {props.posts.map(post => (
+  //       <li key={post.id}>{post.title}</li>
+  //     ))}
+  //   </ul>
+  // );
   const content = props.posts.map(post => (
     <div key={post.id}>
       <h3>{post.title}</h3>
@@ -16,8 +16,8 @@ function Blog(props) {
   ));
   return (
     <div>
-      {sidebar}
-      <hr />
+      {/* {sidebar}
+      <hr /> */}
       {content}
     </div>
   );
