@@ -1,4 +1,6 @@
 import React from "react";
+import M from "materialize-css";
+import { Button } from "react-materialize";
 
 class FlavorForm extends React.Component {
   constructor(props) {
@@ -7,6 +9,12 @@ class FlavorForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+
+    M.AutoInit();
   }
 
   handleChange(event) {
@@ -20,7 +28,7 @@ class FlavorForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="input-field">
         <label>
           Choisissez votre parfum favori :
           <select value={this.state.value} onChange={this.handleChange}>
@@ -30,7 +38,9 @@ class FlavorForm extends React.Component {
             <option value="mango">Mangue</option>
           </select>
         </label>
-        <input type="submit" value="Envoyer" />
+        <Button type="submit" value="send">
+          Envoyer
+        </Button>
       </form>
     );
   }

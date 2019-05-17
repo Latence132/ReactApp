@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-materialize";
 
 class NameForm extends React.Component {
   constructor(props) {
@@ -20,7 +21,10 @@ class NameForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form
+        onSubmit={this.handleSubmit}
+        className="input-field label-30 input-70"
+      >
         <label>
           Nom :
           <input
@@ -29,7 +33,9 @@ class NameForm extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <input type="submit" value="Envoyer" />
+        <Button type="submit" value="send">
+          Envoyer
+        </Button>
       </form>
     );
   }

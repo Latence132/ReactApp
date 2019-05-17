@@ -23,13 +23,13 @@ function App() {
   const posts = [
     {
       id: 1,
-      title: "Bonjour, monde",
-      content: "Bienvenue sur la doc de React !"
+      title: "Hello, world",
+      content: ":)"
     },
     {
       id: 2,
       title: "Installation",
-      content: "Vous pouvez installer React depuis npm."
+      content: "Vous pouvez installer React depuis yarn/npm ou CDN"
     }
   ];
   return (
@@ -79,7 +79,7 @@ function App() {
         </div>
 
         <div className="row">
-          <div className="col s3 ">
+          <div className="col s6 ">
             <FlavorForm />
           </div>
           <div className="col s3">
