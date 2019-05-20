@@ -1,7 +1,8 @@
 import React from "react";
 
 function UserGreeting(props) {
-  return <h1>Bienvenue !</h1>;
+  const user = props.user
+  return <h1>Bienvenue {user} !</h1>;
 }
 
 export default UserGreeting;

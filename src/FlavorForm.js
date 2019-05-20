@@ -9,6 +9,7 @@ class FlavorForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.closeToast = this.closeToast.bind(this);
   }
 
   componentDidMount() {
@@ -22,8 +23,15 @@ class FlavorForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Votre parfum favori est : " + this.state.value);
+    // alert("Votre parfum favori est : " + this.state.value);
+    M.toast({html: "Votre parfum favori est " + this.state.value, classes: 'rounded' } );
     event.preventDefault();
+  }
+  closeToast(){
+    console.log('closeToast')
+    // var toastElement = document.querySelector('.toast');
+    // var toastInstance = M.Toast.getInstance(toastElement);
+    // toastInstance.dismiss();
   }
 
   render() {

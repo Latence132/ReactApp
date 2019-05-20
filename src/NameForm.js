@@ -1,25 +1,32 @@
 import React from "react";
 import { Button } from "react-materialize";
+import M from "materialize-css";
 
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    // this.state = { user: "" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.setUser = this.setUser.bind(this);
   }
 
   handleChange(event) {
-    this.setState({ value: event.target.value });
+    // this.setState({ user: event.target.value });
+    console.log("handleChange: ",event.target.value)
+    this.props.onUserChange({ user: event.target.value });
   }
 
   handleSubmit(event) {
-    alert("Le nom a été soumis : " + this.state.value);
     event.preventDefault();
+    // alert("Le nom a été soumis : " + event.target.value);
+    M.toast({html: "Le nom a été soumis est " + this.props.user, classes: 'rounded' } );
+    
   }
 
   render() {
+    const user = this.props.user
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -27,9 +34,9 @@ class NameForm extends React.Component {
       >
         <label>
           Nom :
-          <input
+          <input 
             type="text"
-            value={this.state.value}
+            value={user}
             onChange={this.handleChange}
           />
         </label>

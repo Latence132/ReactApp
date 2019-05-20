@@ -11,27 +11,46 @@ import FlavorForm from "./FlavorForm.js";
 import Reservation from "./Reservation.js";
 import Calculator from "./temperature/calculator.js";
 
-function App() {
-  const data = {
-    date: new Date(),
-    text: "I hope you enjoy learning React!",
-    author: {
-      name: "Hello Kitty",
-      avatarUrl: "https://placekitten.com/g/64/64"
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: [
+        {
+          id: 1,
+          title: "Hello, world",
+          content: ":)"
+        },
+        {
+          id: 2,
+          title: "Installation",
+          content: "Vous pouvez installer React depuis yarn/npm ou CDN"
+        }
+      ],
+      isLoggedIn: false,
+      data : { 
+                date: new Date(),     
+                text: "I hope you enjoy learning React!",    
+                author: {
+                  name: "Hello Kitty",
+                  avatarUrl: "https://placekitten.com/g/64/64"
+                }
+      },
+      user:"anonymous"
     }
-  };
-  const posts = [
-    {
-      id: 1,
-      title: "Hello, world",
-      content: ":)"
-    },
-    {
-      id: 2,
-      title: "Installation",
-      content: "Vous pouvez installer React depuis yarn/npm ou CDN"
-    }
-  ];
+    this.handleIsLoggedInChange = this.handleIsLoggedInChange.bind(this)
+    this.handleUserChange = this.handleUserChange.bind(this)
+  }
+  handleIsLoggedInChange() {
+    this.setState({isLoggedIn: !this.state.isLoggedIn });
+  }
+
+  handleUserChange(user) {
+    this.setState({user: user });
+  }
+
+
+render() {
   return (
     <div className="App">
       <header className="App-header">
@@ -49,24 +68,24 @@ function App() {
         </a>
       </header>
 
-      <div />
       <section className="container">
         <div className="row">
           <div className="col s4">
-            <Toggle />
+          <NameForm  onUserChange={this.handleUserChange} />
+            <Toggle  onToggleOnChange={this.handleIsLoggedInChange}  isToggleOn={this.state.isLoggedIn} />
           </div>
           <div className="col s4">
-            <Greeting isLoggedIn={false} />
+            <Greeting isLoggedIn={this.state.isLoggedIn} user={this.state.user}/>
           </div>
 
           <div className="col s4">
-            <Comment date={data.date} text={data.text} author={data.author} />
+            <Comment date={this.state.data.date} text={this.state.data.text} author={this.state.data.author} />
           </div>
         </div>
 
         <div className="row">
           <div className="col s5 card blue lighten-2">
-            <Blog posts={posts} />
+            <Blog posts={this.state.posts} />
           </div>
 
           <div className="col s1">
@@ -74,7 +93,7 @@ function App() {
           </div>
 
           <div className="col s5">
-            <NameForm />
+           
           </div>
         </div>
 
@@ -94,5 +113,27 @@ function App() {
     </div>
   );
 }
+}
 
 export default App;
+
+  // const data = {
+  //   date: new Date(),
+  //   text: "I hope you enjoy learning React!",
+  //   author: {
+  //     name: "Hello Kitty",
+  //     avatarUrl: "https://placekitten.com/g/64/64"
+  //   }
+  // };
+  // const posts = [
+  //   {
+  //     id: 1,
+  //     title: "Hello, world",
+  //     content: ":)"
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Installation",
+  //     content: "Vous pouvez installer React depuis yarn/npm ou CDN"
+  //   }
+  // ];
