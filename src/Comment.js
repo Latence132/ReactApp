@@ -20,8 +20,18 @@ export function UserInfo(props) {
 }
 
 export function Comment(props) {
+  const isLoggedIn = props.isLoggedIn;
+  let classNameCss = "";
+
+  if (isLoggedIn) {
+    classNameCss =
+      "scale-in Comment card blue-grey darken-1  white-text scale-transition";
+  } else {
+    classNameCss =
+      "scale-out Comment card blue-grey darken-1  white-text scale-transition";
+  }
   return (
-    <div className="Comment card blue-grey darken-1  white-text">
+    <div className={classNameCss}>
       <div className="card-title">
         <UserInfo user={props.author} />
       </div>

@@ -18,10 +18,7 @@ class Toggle extends React.Component {
   render() {
     const isToggleOn = this.props.isToggleOn;
     return (
-      <Button 
-        onClick={this.handleClick}
-        value ={isToggleOn}
-      >
+      <Button onClick={this.handleClick} value={isToggleOn}>
         {isToggleOn ? "Déconnection" : "Connection"}
       </Button>
     );
