@@ -53,7 +53,7 @@ class App extends React.Component {
 render() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -66,12 +66,12 @@ render() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
 
       <section className="container">
         <div className="row">
           <div className="col s4">
-          <NameForm  onUserChange={this.handleUserChange} />
+          <NameForm  onUserChange={this.handleUserChange} user={this.state.user} />
             <Toggle  onToggleOnChange={this.handleIsLoggedInChange}  isToggleOn={this.state.isLoggedIn} />
           </div>
           <div className="col s4">

@@ -15,12 +15,13 @@ class NameForm extends React.Component {
   handleChange(event) {
     // this.setState({ user: event.target.value });
     console.log("handleChange: ",event.target.value)
-    this.props.onUserChange({ user: event.target.value });
+    this.props.onUserChange(event.target.value );
   }
 
   handleSubmit(event) {
     event.preventDefault();
     // alert("Le nom a été soumis : " + event.target.value);
+    console.log("handleSubmit")
     M.toast({html: "Le nom a été soumis est " + this.props.user, classes: 'rounded' } );
     
   }
