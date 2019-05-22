@@ -49,6 +49,9 @@ class App extends React.Component {
     this.setState({ user: user });
   }
 
+  onToggleOnChange() {
+    this.setState({ isLoggedIn: !this.state.isLoggedIn });
+  }
   render() {
     return (
       <div className="App">
@@ -58,9 +61,8 @@ class App extends React.Component {
               <NameForm
                 onUserChange={this.handleUserChange}
                 user={this.state.user}
-                onToggleOnChange={
-                  (this.state.isLoggedIn, this.handleIsLoggedInChange)
-                }
+                isToggleOn={this.state.isLoggedIn}
+                onToggleOnChange={this.handleIsLoggedInChange}
               />
             </div>
             <div className="col s12 m4">

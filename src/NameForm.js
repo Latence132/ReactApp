@@ -9,7 +9,7 @@ class NameForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleToggleOn = this.handleToggleOn.bind(this);
+
     // this.setUser = this.setUser.bind(this);
   }
 
@@ -22,35 +22,31 @@ class NameForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     // alert("Le nom a été soumis : " + event.target.value);
-    console.log("handleSubmit");
+    // console.log("handleSubmit");
     M.toast({
       html: "Le nom a été soumis est " + this.props.user,
       classes: "rounded"
     });
-  }
-
-  handleToggleOn(event) {
-    event.preventDefault();
-
-    this.props.onToggleOnChange(!this.props.isToggleOn);
+    this.props.onToggleOnChange(this.props.isToggleOn);
   }
 
   render() {
     const user = this.props.user;
 
     const isToggleOn = this.props.isToggleOn;
-    const divStyle = {
-      color: "white"
-    };
+    // const divStyle = {
+    //   color: "white"
+    // };
+    // style = { divStyle };
     return (
       <form
-        onSubmit={(this.handleSubmit, this.handleToggleOn)}
+        onSubmit={this.handleSubmit}
         className="input-field label-30 input-70"
       >
         <label>Nom :</label>
         <input type="text" value={user} onChange={this.handleChange} />
 
-        <Button type="submit" value="send" style={divStyle}>
+        <Button type="submit" value="send">
           {isToggleOn ? "Déconnection" : "Connection"}
         </Button>
       </form>
