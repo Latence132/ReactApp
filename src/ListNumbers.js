@@ -1,14 +1,13 @@
 import React from "react";
 
 function ListNumbers(props) {
-  // Correct ! Pas la peine de spécifier la clé ici :
   let tab = props.numbers.map(number => (
-    <li className="collection-item" key={number.toString()}>
+    <li className={"collection-item box box" + number} key={number.toString()}>
       {number}
     </li>
   ));
 
-  return <ul className="collection">{tab}</ul>;
+  return <ul className="collection quotes">{tab}</ul>;
 }
 
 export default ListNumbers;

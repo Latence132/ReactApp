@@ -38,3 +38,14 @@
 ul {
   list-style: none;
 }
+
+.input-field label {
+  pointer-events: auto !important;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: static;
+  opacity: 1;
+  pointer-events: auto !important;
+}

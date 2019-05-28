@@ -1,6 +1,7 @@
 import React from "react";
 // import logo from "./logo.svg";
 import "./App.css";
+import "./ListNumbers.css";
 // import Toggle from "./Toggle.js";
 import Greeting from "./Greeting.js";
 import { Comment } from "./Comment.js";
@@ -10,6 +11,8 @@ import NameForm from "./NameForm.js";
 import FlavorForm from "./FlavorForm.js";
 import Reservation from "./Reservation.js";
 import Calculator from "./temperature/calculator.js";
+import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
+import BitCoin from "./BitCoin.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -36,10 +39,13 @@ class App extends React.Component {
           avatarUrl: "https://placekitten.com/g/64/64"
         }
       },
-      user: "anonymous"
+      user: "anonymous",
+      isGoing: true,
+      numberOfGuests: 2
     };
     this.handleIsLoggedInChange = this.handleIsLoggedInChange.bind(this);
     this.handleUserChange = this.handleUserChange.bind(this);
+    this.onReservationHandle = this.onReservationHandle.bind(this);
   }
   handleIsLoggedInChange() {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
@@ -52,62 +58,96 @@ class App extends React.Component {
   onToggleOnChange() {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
   }
+  onReservationHandle(name, value) {
+    this.setState({
+      [name]: value
+    });
+  }
+
   render() {
+    const styleCenter = { margin: "1% 20% 0% 20%", width: "75%" };
     return (
       <div className="App">
         <section className="container">
-          <div className="row">
-            <div className="col s12 m2">
-              <NameForm
-                onUserChange={this.handleUserChange}
-                user={this.state.user}
-                isToggleOn={this.state.isLoggedIn}
-                onToggleOnChange={this.handleIsLoggedInChange}
-              />
-            </div>
-            <div className="col s12 m4">
-              <Greeting
-                isLoggedIn={this.state.isLoggedIn}
-                user={this.state.user}
-              />
+          <Timeline lineColor={"#ddd"}>
+            <TimelineItem
+              key="001"
+              dateText="NameForm - Greeting – Blog - Comment"
+              style={{ color: "#e86971" }}
+            >
+              <div className="row center-align">
+                <div className="col" style={styleCenter}>
+                  <NameForm
+                    onUserChange={this.handleUserChange}
+                    user={this.state.user}
+                    isToggleOn={this.state.isLoggedIn}
+                    onToggleOnChange={this.handleIsLoggedInChange}
+                  />
+                </div>
+                <div className="col" style={styleCenter}>
+                  <Greeting
+                    isLoggedIn={this.state.isLoggedIn}
+                    user={this.state.user}
+                  />
+                </div>
+                <div className="col" style={styleCenter}>
+                  <Comment
+                    isLoggedIn={this.state.isLoggedIn}
+                    date={this.state.data.date}
+                    text={this.state.data.text}
+                    author={this.state.data.author}
+                  />
+                </div>
+              </div>
+            </TimelineItem>
+
+            <TimelineItem
+              key="002"
+              dateText="Blog – list numbers"
+              style={{ color: "#e86971" }}
+            />
+            <div className="row">
+              <div className="col s12 m5 card blue lighten-2">
+                <Blog
+                  posts={this.state.posts}
+                  isLoggedIn={this.state.isLoggedIn}
+                />
+              </div>
+              <div className="col">
+                <ListNumbers numbers={[1, 2, 3]} />
+              </div>
             </div>
 
-            <div className="col s12 m4">
-              <Comment
-                isLoggedIn={this.state.isLoggedIn}
-                date={this.state.data.date}
-                text={this.state.data.text}
-                author={this.state.data.author}
-              />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col s12 m5 card blue lighten-2">
-              <Blog
-                posts={this.state.posts}
-                isLoggedIn={this.state.isLoggedIn}
-              />
-            </div>
-
-            <div className="col s12 m1">
-              <ListNumbers numbers={[1, 2, 3, 4, 5]} />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col s12 m6">
-              <FlavorForm />
-            </div>
-            <div className="col s12 m3">
-              <Reservation />
-            </div>
-            <div className="col s12 m3">
-              <Calculator />
-            </div>
-          </div>
+            <TimelineItem
+              key="003"
+              dateText="Flavor – calculation"
+              style={{ color: "#e86971" }}
+            >
+              <div className="row">
+                <div className="col s12 m6" style={styleCenter}>
+                  <FlavorForm />
+                </div>
+                <div className="col s12 m3" style={styleCenter}>
+                  <Reservation
+                    isGoing={this.state.isGoing}
+                    numberOfGuests={this.state.numberOfGuests}
+                    onReservationChange={this.onReservationHandle}
+                  />
+                </div>
+                <div className="col s12 m3" style={styleCenter}>
+                  <Calculator />
+                </div>
+              </div>
+            </TimelineItem>
+            <TimelineItem
+              key="004"
+              dateText="BitCoin API"
+              style={{ color: "#e86971" }}
+            >
+              <BitCoin />
+            </TimelineItem>
+          </Timeline>
         </section>
-        <div />
       </div>
     );
   }
