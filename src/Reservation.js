@@ -25,7 +25,7 @@ class Reservation extends React.Component {
       <div>
         <Checkbox
           // className="filled-in "
-          label="Participe:"
+          label="Participe"
           checked={isGoing}
           onChange={this.handleInputChange}
         />
