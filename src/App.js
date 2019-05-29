@@ -1,8 +1,6 @@
 import React from "react";
-// import logo from "./logo.svg";
 import "./App.css";
 import "./ListNumbers.css";
-// import Toggle from "./Toggle.js";
 import Greeting from "./Greeting.js";
 import { Comment } from "./Comment.js";
 import ListNumbers from "./ListNumbers.js";

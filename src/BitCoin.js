@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import "./BitCoin.css";
+// import "./BitCoin.css";
 import _ from "lodash";
 import { Line, Chart } from "react-chartjs-2";
 import moment from "moment";
-import currencies from "./supported-currencies.json";
 import M from "materialize-css";
+import currencies from "./supported-currencies.json";
+import { Select } from "react-materialize";
 
 console.log(currencies);
 
@@ -18,11 +19,12 @@ class BitCoin extends Component {
 
     this.state = { historicalData: null, currency: "PHP" };
     this.onCurrencySelect = this.onCurrencySelect.bind(this);
+    this.getBitcoinData = this.getBitcoinData.bind(this);
   }
 
   componentDidMount() {
-    this.getBitcoinData();
     M.AutoInit();
+    this.getBitcoinData();
   }
 
   getBitcoinData() {
@@ -76,46 +78,26 @@ class BitCoin extends Component {
   }
 
   render() {
-    let currenciesDisplay = currencies.map((obj, index) => (
+    let options = currencies.map((obj, index) => (
       <option key={`${index}-${obj.country}`} value={obj.currency}>
-        {" "}
-        {obj.currency}{" "}
+        {obj.currency}
       </option>
     ));
     if (this.state.historicalData) {
       return (
         <div>
-          <div className="select-container">
-            <span style={{ fontSize: 18, fontFamily: "Bungee" }}>
-              {" "}
-              Select your currency:{" "}
-            </span>
-            <select
+          <form>
+            <label htmlFor="currencies">Select your currency: </label>
+            <Select
+              id="currencies"
               value={this.state.currency}
               onChange={this.onCurrencySelect}
             >
-              {currenciesDisplay}
-            </select>
-            {this.state.currency !== "PHP" && (
-              <div>
-                <a
-                  href="#"
-                  className="link"
-                  onClick={() => this.setCurrency("PHP")}
-                  style={{
-                    color: "black",
-                    fontSize: 16,
-                    fontFamily: "Bungee"
-                  }}
-                >
-                  {" "}
-                  [CLICK HERE TO RESET]{" "}
-                </a>
-              </div>
-            )}
-          </div>
+              {options}
+            </Select>
+          </form>
 
-          <div style={{ marginTop: 10 }}>
+          <div>
             <Line data={this.formatChartData()} height={250} />
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Checkbox } from "react-materialize";
 class Reservation extends React.Component {
   constructor(props) {
     super(props);
@@ -22,16 +22,14 @@ class Reservation extends React.Component {
     const numberOfGuests = this.props.numberOfGuests;
     const isGoing = this.props.isGoing;
     return (
-      <form>
-        <label htmlFor="isGoing">Participe:</label>
-        <input
-          className="filled-in "
-          id="isGoing"
-          name="isGoing"
-          type="checkbox"
+      <div>
+        <Checkbox
+          // className="filled-in "
+          label="Participe:"
           checked={isGoing}
           onChange={this.handleInputChange}
         />
+
         <br />
         <label htmlFor="numberOfGuests">Nombre d'invités :</label>
         <input
@@ -43,7 +41,7 @@ class Reservation extends React.Component {
           style={{ width: 50 }}
           className="center"
         />
-      </form>
+      </div>
     );
   }
 }
