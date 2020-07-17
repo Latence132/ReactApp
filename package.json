@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "chart.js": "^2.8.0",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.19",
     "materialize-css": "^1.0.0-rc.2",
     "moment": "^2.24.0",
     "react": "^16.8.6",
